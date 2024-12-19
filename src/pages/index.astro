@@ -79,53 +79,56 @@ layout: "../layouts/BaseLayout.astro"
 
   <main>
     <section id="introduccion" class="section-island" onclick="generateDescription('introduccion')">
-      <h2>Introducción</h2>
-      <p>Bienvenido a Rute, un lugar lleno de historia y belleza natural.</p>
-    </section>
-    <section id="historia" class="section-island" onclick="generateDescription('historia')">
-      <h2>Historia</h2>
-      <p>Rute tiene una rica historia que se remonta a siglos atrás.</p>
-    </section>
-    <section id="atracciones" class="section-island" onclick="generateDescription('atracciones')">
-      <h2>Atracciones</h2>
-      <p>Descubre las principales atracciones turísticas de Rute.</p>
-    </section>
-  </main>
-  
-  <footer>
-    <p>&copy; 2023 Turismo en Rute. Todos los derechos reservados.</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script>
-    import axios from 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js';
-    async function generateDescription(sectionId: string) {
-      try {
-        const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
-          prompt: `Genera una descripción avanzada para la sección ${sectionId} de Rute.`,
-          max_tokens: 150,
-          n: 1,
-          stop: null,
-          temperature: 0.7,
-        }, {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `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`
-          }
-        });
-
-        const description = response.data.choices[0].text.trim();
-        const sectionElement = document.getElementById(sectionId);
-        if (sectionElement) {
-          const paragraph = sectionElement.querySelector('p');
-          if (paragraph) {
-            paragraph.innerText = description;
-          }
-        }
-      } catch (error) {
-        console.error('Error generating description:', error);
-      }
-    }
-  </script>
-</body>
-</html>
+                        <h2>Introducción</h2>
+                  <p>Bienvenido a Rute, un lugar lleno de historia y belleza natural.</p>
+                </section>
+                <section id="historia" class="section-island" onclick="generateDescription('historia')">
+                  <h2>Historia</h2>
+                  <p>Rute tiene una rica historia que se remonta a siglos atrás.</p>
+                </section>
+                <section id="atracciones" class="section-island" onclick="generateDescription('atracciones')">
+                  <h2>Atracciones</h2>
+                  <p>Descubre las principales atracciones turísticas de Rute.</p>
+                </section>
+              </main>
+              
+              <footer>
+                <p>&copy; 2023 Turismo en Rute. Todos los derechos reservados.</p>
+              </footer>
+            
+              <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+              <script>
+                async function generateDescription(sectionId) {
+                  try {
+                    const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+                      prompt: `Genera una descripción avanzada para la sección ${sectionId} de Rute.`,
+                      max_tokens: 150,
+                      n: 1,
+                      stop: null,
+                      temperature: 0.7,
+                    }, {
+                      headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `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`
+                      }
+                    });
+            
+                    const description = response.data.choices[0].text.trim();
+                    const sectionElement = document.getElementById(sectionId);
+                    if (sectionElement) {
+                      const paragraphElement = sectionElement?.querySelector('p');
+                      if (paragraphElement) {
+                        paragraphElement.innerText = description;
+                      }
+                    }
+                  } catch (error) {
+                    console.error('Error generating description:', error);
+                  }
+                  }
+              
+                  // Ensure the function is available in the global scope
+                  window.generateDescription = generateDescription;
+                </script>
+              </script>
+            </body>
+            </html>
