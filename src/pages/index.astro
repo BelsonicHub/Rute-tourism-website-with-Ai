@@ -1,7 +1,8 @@
 ---
 title: "Turismo en Rute"
 layout: "../layouts/BaseLayout.astro"
-import: {axios, marked}
+import { marked } from 'marked';
+import axios from 'axios';
 ---
 
 <!DOCTYPE html>
@@ -83,7 +84,7 @@ import: {axios, marked}
       <h2>Introducción</h2>
       <p>Bienvenido a Rute, un lugar lleno de historia y belleza natural.</p>
     </section>
-    <section id="historia" class="section-island" onclick="loadMarkdown('historia.md')">
+    <section id="historia" class="section-island" onclick="loadMarkdown('.\public\content\descriptions\historia.md')">
       <h2>Historia</h2>
       <p>Rute tiene una rica historia que se remonta a siglos atrás.</p>
     </section>
@@ -95,22 +96,22 @@ import: {axios, marked}
   </main>
   
   <footer>
-    <p>&copy; 2023 Turismo en Rute. Todos los derechos reservados.</p>
+    <p>&copy; Pagina de uso libre. Puedes encontrar todo el codigo y hacer propuestas en: https://github.com/BelsonicHub/Rute-tourism-website-with-Ai </p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
+  <script type="module">
     import axios from 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js';
-    import marked from 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
     async function loadMarkdown(file) {
       try {
         const response = await axios.get(file);
         const markdownContent = response.data;
         const htmlContent = marked(markdownContent);
         const articleElement = document.getElementById('markdown-content');
-        articleElement.innerHTML = htmlContent;
-        articleElement.style.display = 'block';
+        if (articleElement) {
+          articleElement.innerHTML = htmlContent;
+          articleElement.style.display = 'block';
+        }
       } catch (error) {
         console.error('Error loading markdown file:', error);
       }
