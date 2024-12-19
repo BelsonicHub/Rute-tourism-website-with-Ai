@@ -1,8 +1,6 @@
 ---
 ---
 
-Historia de Rute
-
 Rute tiene una rica historia que se remonta a varios siglos atrás. Esta localidad andaluza ha sido testigo de numerosos eventos históricos y cambios culturales a lo largo del tiempo, lo que la convierte en un lugar lleno de tradición y patrimonio.
 Orígenes y Fundación
 

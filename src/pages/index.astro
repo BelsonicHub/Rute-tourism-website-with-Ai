@@ -1,6 +1,7 @@
 ---
 title: "Turismo en Rute"
 layout: "../layouts/BaseLayout.astro"
+import: {axios, marked}
 ---
 
 <!DOCTYPE html>
@@ -78,22 +79,42 @@ layout: "../layouts/BaseLayout.astro"
   </header>
 
   <main>
-    <section id="introduccion" class="section-island">
+    <section id="introduccion" class="section-island" onclick="loadMarkdown('introduccion.md')">
       <h2>Introducción</h2>
       <p>Bienvenido a Rute, un lugar lleno de historia y belleza natural.</p>
     </section>
-    <section id="historia" class="section-island">
+    <section id="historia" class="section-island" onclick="loadMarkdown('historia.md')">
       <h2>Historia</h2>
       <p>Rute tiene una rica historia que se remonta a siglos atrás.</p>
     </section>
-    <section id="atracciones" class="section-island">
+    <section id="atracciones" class="section-island" onclick="loadMarkdown('atracciones.md')">
       <h2>Atracciones</h2>
       <p>Descubre las principales atracciones turísticas de Rute.</p>
     </section>
+    <article id="markdown-content" class="article"></article>
   </main>
   
   <footer>
     <p>&copy; 2023 Turismo en Rute. Todos los derechos reservados.</p>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    import axios from 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js';
+    import marked from 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+    async function loadMarkdown(file) {
+      try {
+        const response = await axios.get(file);
+        const markdownContent = response.data;
+        const htmlContent = marked(markdownContent);
+        const articleElement = document.getElementById('markdown-content');
+        articleElement.innerHTML = htmlContent;
+        articleElement.style.display = 'block';
+      } catch (error) {
+        console.error('Error loading markdown file:', error);
+      }
+    }
+  </script>
 </body>
 </html>
