@@ -1,6 +1,6 @@
 ---
 title: "Turismo en Rute"
-layout: "../layouts/BaseLayout.astro"
+layout: "../layouts/Layout.astro"
 import { marked } from 'marked';
 import axios from 'axios';
 ---
@@ -40,7 +40,12 @@ import axios from 'axios';
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       padding: 20px;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, max-height 0.3s ease;
+      overflow: hidden;
+      max-height: 200px; /* Initial height */
+    }
+    .section-island.expanded {
+      max-height: 1000px; /* Expanded height */
     }
     .section-island:hover {
       transform: translateY(-10px);
@@ -80,17 +85,17 @@ import axios from 'axios';
   </header>
 
   <main>
-    <section id="introduccion" class="section-island" onclick="loadMarkdown('introduccion.md')">
+    <section id="introduccion" class="section-island" onclick="loadMarkdown('/introduccion.md', 'introduccion')">
       <h2>Introducción</h2>
-      <p>Bienvenido a Rute, un lugar lleno de historia y belleza natural.</p>
+      <p id="introduccion-desc">Bienvenido a Rute, un lugar lleno de historia y belleza natural.</p>
     </section>
-    <section id="historia" class="section-island" onclick="loadMarkdown('.\public\content\descriptions\historia.md')">
+    <section id="historia" class="section-island" onclick="loadMarkdown('/historia.md', 'historia')">
       <h2>Historia</h2>
-      <p>Rute tiene una rica historia que se remonta a siglos atrás.</p>
+      <p id="historia-desc">Rute tiene una rica historia que se remonta a siglos atrás.</p>
     </section>
-    <section id="atracciones" class="section-island" onclick="loadMarkdown('atracciones.md')">
+    <section id="atracciones" class="section-island" onclick="loadMarkdown('/atracciones.md', 'atracciones')">
       <h2>Atracciones</h2>
-      <p>Descubre las principales atracciones turísticas de Rute.</p>
+      <p id="atracciones-desc">Descubre las principales atracciones turísticas de Rute.</p>
     </section>
     <article id="markdown-content" class="article"></article>
   </main>
@@ -100,22 +105,28 @@ import axios from 'axios';
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script type="module">
-    import axios from 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js';
-    async function loadMarkdown(file) {
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    async function loadMarkdown(file, sectionId) {
       try {
         const response = await axios.get(file);
         const markdownContent = response.data;
         const htmlContent = marked(markdownContent);
-        const articleElement = document.getElementById('markdown-content');
-        if (articleElement) {
-          articleElement.innerHTML = htmlContent;
-          articleElement.style.display = 'block';
+        const sectionElement = document.getElementById(sectionId);
+        const descElement = document.getElementById(sectionId + '-desc');
+        if (descElement) {
+          descElement.innerHTML = htmlContent;
+        }
+        if (sectionElement) {
+          sectionElement.classList.toggle('expanded');
         }
       } catch (error) {
         console.error('Error loading markdown file:', error);
       }
     }
+
+    // Ensure the function is available in the global scope
+    window.loadMarkdown = loadMarkdown;
   </script>
 </body>
 </html>
