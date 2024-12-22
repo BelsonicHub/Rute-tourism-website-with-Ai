@@ -1,4 +1,5 @@
 ---
+// filepath: /c:/Users/HP/Documents/GitHub/Web Ai Rute/Rute-tourism-website-with-Ai/src/pages/index.astro
 title: "Turismo en Rute"
 layout: "../layouts/Layout.astro"
 import { marked } from 'marked';
@@ -85,15 +86,15 @@ import axios from 'axios';
   </header>
 
   <main>
-    <section id="introduccion" class="section-island" onclick="loadMarkdown('/introduccion.md', 'introduccion')">
+    <section id="introduccion" class="section-island" onclick="loadMarkdown('/src/introduccion.md', 'introduccion')">
       <h2>Introducción</h2>
-      <p id="introduccion-desc">Bienvenido a Rute, un lugar lleno de historia y belleza natural.</p>
+      <p id="introduccion-desc">Rute es un pintoresco y acogedor pueblo situado en la provincia de Córdoba, en la comunidad autónoma de Andalucía, al sur de España. Este lugar destaca no solo por su riqueza cultural e histórica, sino también por su entorno natural y la amabilidad de su gente.</p>
     </section>
-    <section id="historia" class="section-island" onclick="loadMarkdown('/historia.md', 'historia')">
+    <section id="historia" class="section-island" onclick="window.location.href='/historia'">
       <h2>Historia</h2>
       <p id="historia-desc">Rute tiene una rica historia que se remonta a siglos atrás.</p>
     </section>
-    <section id="atracciones" class="section-island" onclick="loadMarkdown('/atracciones.md', 'atracciones')">
+    <section id="atracciones" class="section-island" onclick="loadMarkdown('/src/atracciones.md', 'atracciones')">
       <h2>Atracciones</h2>
       <p id="atracciones-desc">Descubre las principales atracciones turísticas de Rute.</p>
     </section>
