@@ -1,0 +1,84 @@
+---
+// filepath: /c:/Users/HP/Documents/GitHub/Web Ai Rute/Rute-tourism-website-with-Ai/src/pages/atracciones.astro
+title: "Atracciones de Rute"
+import Layout from '../components/Layout.astro';
+---
+
+<Layout>
+    <a href="/" class="back-arrow">&#8592; Volver</a>
+    <section class="hero" style="background-image: url('./public/images/atracciones.webp');">
+        <div class="container">
+            <h1 class="hero-title">Atracciones</h1>
+        </div>
+    </section>
+
+    <section class="description">
+        <div class="container">
+            <p class="description-text">Rute, situado en la Subbética cordobesa, ofrece numerosos atractivos que destacan por su belleza natural e histórica. Entre ellos se encuentra el Parque Natural de las Sierras Subbéticas, un entorno ideal para senderismo y actividades al aire libre, el Mirador de Zambra, que regala impresionantes vistas panorámicas de la región, y el Parque Nuestra Señora del Carmen, un espacio céntrico perfecto para pasear y relajarse. También destacan la histórica Fuente del Pilar de Rute, las pintorescas calles con su arquitectura tradicional andaluza, la Iglesia de Santa Catalina, una joya de la historia local, y la Ermita de San Sebastián, ubicada en un entorno apacible que invita a la reflexión. Estos lugares representan la esencia de Rute y son ideales para quienes buscan disfrutar de su autenticidad sin restricciones culturales.</p>
+        </div>
+    </section>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0; /* Light grey background */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            color: gray;
+            text-decoration: none;
+            background-color: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: black; /* Change title color to black */
+        }
+
+        .description {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        .description-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-align: justify;
+            margin: 0;
+        }
+    </style>
+</Layout>
