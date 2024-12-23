@@ -18,11 +18,11 @@ import axios from 'axios';
       margin: 0;
       padding: 0;
       height: 100vh;
-      background: linear-gradient(to bottom, green, blue);
+      background: linear-gradient(to bottom,  lightgreen, lightblue);
       transition: background 0.3s ease;
     }
     header {
-      background-color: rgba(51, 102, 153, 0.8);
+      background-color: transparent(blue);
       color: white;
       text-align: center;
       padding: 20px 0;
@@ -36,7 +36,7 @@ import axios from 'axios';
       gap: 20px;
     }
     .section-island {
-      background-color: white;
+      background-color: transparent(grey);
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       padding: 20px;
@@ -71,8 +71,8 @@ import axios from 'axios';
       margin-bottom: 10px;
     }
     footer {
-      background-color: rgba(51, 102, 153, 0.8);
-      color: white;
+      background-color: transparent(blue);
+      color: black+grey;
       text-align: center;
       padding: 10px 0;
       margin-top: 20px;
@@ -82,11 +82,11 @@ import axios from 'axios';
 <body>
   <header>
     <h1>Descubre Rute</h1>
-    <p>Un encantador pueblo en Andalucía</p>
+    <p>Un encantador pueblo situado en Cordoba, una provincia de Andalucía</p>
   </header>
 
   <main>
-    <section id="introduccion" class="section-island" onclick="loadMarkdown('/src/introduccion.md', 'introduccion')">
+    <section id="introduccion" class="section-island" onclick="window.location.href=''">
       <h2>Introducción</h2>
       <p id="introduccion-desc">Rute es un pintoresco y acogedor pueblo situado en la provincia de Córdoba, en la comunidad autónoma de Andalucía, al sur de España. Este lugar destaca no solo por su riqueza cultural e histórica, sino también por su entorno natural y la amabilidad de su gente.</p>
     </section>
@@ -105,29 +105,5 @@ import axios from 'axios';
     <p>&copy; Pagina de uso libre. Puedes encontrar todo el codigo y hacer propuestas en: https://github.com/BelsonicHub/Rute-tourism-website-with-Ai y gracias a Vercel por darme un host para la pagina </p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script>
-    async function loadMarkdown(file, sectionId) {
-      try {
-        const response = await axios.get(file);
-        const markdownContent = response.data;
-        const htmlContent = marked(markdownContent);
-        const sectionElement = document.getElementById(sectionId);
-        const descElement = document.getElementById(sectionId + '-desc');
-        if (descElement) {
-          descElement.innerHTML = htmlContent;
-        }
-        if (sectionElement) {
-          sectionElement.classList.toggle('expanded');
-        }
-      } catch (error) {
-        console.error('Error loading markdown file:', error);
-      }
-    }
-
-    // Ensure the function is available in the global scope
-    window.loadMarkdown = loadMarkdown;
-  </script>
-</body>
+  </body>
 </html>

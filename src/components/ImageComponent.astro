@@ -1,0 +1,16 @@
+---
+// filepath: /c:/Users/HP/Documents/GitHub/Web Ai Rute/Rute-tourism-website-with-Ai/src/components/ImageComponent.astro
+const { src, alt } = Astro.props;
+---
+
+<img src={src} alt={alt} class="content-image" />
+
+<style>
+    .content-image {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>

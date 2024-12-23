@@ -2,6 +2,7 @@
 // filepath: /c:/Users/HP/Documents/GitHub/Web Ai Rute/Rute-tourism-website-with-Ai/src/pages/historia.astro
 title: "Historia de Rute"
 import Layout from '../components/Layout.astro';
+import ImageComponent from '../components/ImageComponent.astro';
 ---
 
 <Layout>
@@ -15,31 +16,31 @@ import Layout from '../components/Layout.astro';
     <section class="description">
         <div class="container">
             <div class="content-block">
-                <img src="/images/origenes.webp" alt="Orígenes de Rute" class="content-image">
+                <ImageComponent src="/images/origenes.webp" alt="Orígenes de Rute" />
                 <p class="description-text">Rute tiene una rica historia que se remonta a varios siglos atrás. Esta localidad andaluza ha sido testigo de numerosos eventos históricos y cambios culturales a lo largo del tiempo, lo que la convierte en un lugar lleno de tradición y patrimonio.</p>
             </div>
             <div class="content-block">
-                <img src="/images/fundacion.jpg" alt="Fundación de Rute" class="content-image">
+                <ImageComponent src="/images/fundacion.jpg" alt="Fundación de Rute" />
                 <p class="description-text">Orígenes y Fundación: Los orígenes de Rute se pueden rastrear hasta la época medieval. La fundación de Rute como un asentamiento fortificado tuvo lugar alrededor del siglo XIII, durante la Reconquista, cuando los cristianos luchaban por recuperar el territorio de manos de los musulmanes. El nombre "Rute" proviene del término árabe "Ruta", que significa "camino" o "sendero", reflejando su ubicación estratégica en las rutas comerciales de la época.</p>
             </div>
             <div class="content-block">
-                <img src="/images/influencia_musulmana.jpg" alt="Influencia Musulmana" class="content-image">
+                <ImageComponent src="/images/influencia_musulmana.jpg" alt="Influencia Musulmana" />
                 <p class="description-text">Influencia Musulmana: Durante la dominación musulmana, Rute fue un importante enclave defensivo. Se construyeron numerosas estructuras defensivas, incluyendo un castillo en el que se pueden ver influencias arquitectónicas musulmanas. El Castillo de Rute, situado en una colina, ofrecía una vista estratégica del valle y las montañas circundantes, permitiendo a sus habitantes protegerse de invasores.</p>
             </div>
             <div class="content-block">
-                <img src="/images/reconquista.jpg" alt="Reconquista y Dominio Cristiano" class="content-image">
+                <ImageComponent src="/images/reconquista.jpg" alt="Reconquista y Dominio Cristiano" />
                 <p class="description-text">Reconquista y Dominio Cristiano: Con la Reconquista, Rute pasó a manos cristianas y se integró en el Reino de Castilla. En esta época, se fortalecieron las murallas y se construyeron edificios religiosos como la Iglesia de Santa Catalina, un magnífico ejemplo de arquitectura renacentista. La localidad comenzó a desarrollarse alrededor del castillo y la iglesia, creciendo en importancia y población.</p>
             </div>
             <div class="content-block">
-                <img src="/images/siglos_xviii_xix.jpg" alt="Siglos XVIII y XIX" class="content-image">
+                <ImageComponent src="/images/siglos_xviii_xix.jpg" alt="Siglos XVIII y XIX" />
                 <p class="description-text">Siglos XVIII y XIX: En los siglos XVIII y XIX, Rute experimentó un auge económico gracias a la agricultura y la industria artesanal. La producción de anís y el cultivo de olivos se convirtieron en los pilares de la economía local. Durante este período, se construyeron numerosas bodegas y destilerías, muchas de las cuales aún existen hoy en día, produciendo algunos de los mejores anises de España.</p>
             </div>
             <div class="content-block">
-                <img src="/images/siglo_xx.jpg" alt="Siglo XX y Actualidad" class="content-image">
+                <ImageComponent src="/images/siglo_xx.jpg" alt="Siglo XX y Actualidad" />
                 <p class="description-text">Siglo XX y Actualidad: En el siglo XX, Rute continuó desarrollándose, con la modernización de su infraestructura y un aumento en el turismo. Hoy en día, Rute es conocido no solo por sus productos artesanales, sino también por sus museos temáticos, como el Museo del Anís y el Museo del Azúcar, que celebran la rica herencia cultural y gastronómica del pueblo.</p>
             </div>
             <div class="content-block">
-                <img src="/images/patrimonio.jpg" alt="Patrimonio y Tradiciones" class="content-image">
+                <ImageComponent src="/images/patrimonio.jpg" alt="Patrimonio y Tradiciones" />
                 <p class="description-text">Patrimonio y Tradiciones: Rute es un lugar que mantiene vivas sus tradiciones y su historia. Las fiestas locales, como la Semana Santa y la Feria de Mayo, son celebraciones que reflejan el profundo sentido de comunidad y la devoción religiosa de sus habitantes. Estas festividades atraen a visitantes de toda España y del extranjero, interesados en experimentar la autenticidad y el calor de la cultura ruteña.</p>
             </div>
         </div>
@@ -61,9 +62,9 @@ import Layout from '../components/Layout.astro';
             top: 20px;
             left: 20px;
             font-size: 1.5rem;
-            color: gray;
+            color: black;
             text-decoration: none;
-            background-color: white;
+            background-color: semi-transparent(grey, 0.5); /* Add semi-transparent grey background */
             padding: 10px;
             border-radius: 50%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -79,6 +80,7 @@ import Layout from '../components/Layout.astro';
             color: white;
             text-align: center;
             padding: 20px;
+
         }
 
         .container {
@@ -91,6 +93,7 @@ import Layout from '../components/Layout.astro';
             font-size: 3rem;
             margin-bottom: 1rem;
             color: black; /* Change title color to black */
+        
         }
 
         .description {
@@ -105,19 +108,19 @@ import Layout from '../components/Layout.astro';
             margin-bottom: 20px;
         }
 
-        .content-image {
-            width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
         .description-text {
             font-size: 1.2rem;
             line-height: 1.6;
             text-align: justify;
             margin: 0;
+            word-spacing: normal; /* Ensure consistent word spacing */
+        }
+
+        @media (max-width: 655px) {
+            .description-text {
+                font-size: 1rem;
+                word-spacing: normal;
+            }
         }
     </style>
 </Layout>
