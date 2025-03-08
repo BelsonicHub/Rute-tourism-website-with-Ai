@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.4.2",
-    "axios": "^1.7.9",
+    "axios": "^1.8.2",
     "marked": "^15.0.4",
     "openai": "^4.77.0"
   }
